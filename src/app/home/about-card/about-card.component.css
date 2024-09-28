@@ -1,0 +1,28 @@
+.section-about {
+    max-width: 100vw;
+    height: 16.25rem;
+    background-color: #0F0E18;
+
+    align-items: center;
+
+}
+
+.about-text {
+    color: #FFFFFF;
+    font-size: 30px;
+    font-family: "Bebas Neue", sans-serif;
+    text-align: center;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 4%;
+    opacity: 0; 
+    transform: translateY(100px); 
+    animation: fadeInUp 1s ease-out forwards; 
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
