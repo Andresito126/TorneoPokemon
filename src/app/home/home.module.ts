@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomePComponent } from './home-p/home-p.component';
+import { AboutCardComponent } from './about-card/about-card.component';
 
 
 
 @NgModule({
   declarations: [
-    HomePComponent
+    HomePComponent,
+    AboutCardComponent,
   ],
   imports: [
     CommonModule
