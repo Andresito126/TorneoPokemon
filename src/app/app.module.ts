@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     HomeModule,
+    //para usar los servicios http
     HttpClientModule
   ],
   providers: [],
