@@ -1,1 +1,25 @@
-<p>pokemon-p works!</p>
+<div class="pokemon-grid">
+    <!-- iterar sobre los pokemons y hacerles una card -->
+    <div class="box" *ngFor="let pokemon of pokemons">
+        <img [src]="pokemon.sprites.front_default" alt="Pokemon">
+        <h3>{{pokemon.name}}</h3>
+        <p>
+            <b>Type:</b> {{pokemon.types[0].type.name}}
+        </p>
+        <p>
+            <b>Level:</b> {{pokemon.base_experience}} 
+        </p>
+        <p>
+            <b>Height:</b>{{pokemon.height}}
+        </p>
+        <p>
+            <b>Health:</b>{{pokemon.stats[0].base_stat}}
+        </p>
+        <p>
+            <b>Attack Power:</b>{{pokemon.stats[1].base_stat}}
+        </p>
+        <p>
+            <b>Main Ability:</b> {{pokemon.abilities[0].ability.name}} 
+        </p>
+    </div>
+</div>

@@ -7,6 +7,7 @@ import { FooterComponent } from './footer/footer.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HomeModule } from './home/home.module';
 import { HttpClientModule } from '@angular/common/http';
+import { PokemonsModule } from './pokemons/pokemons.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     HomeModule,
     //para usar los servicios http
-    HttpClientModule
+    HttpClientModule,
+    PokemonsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
