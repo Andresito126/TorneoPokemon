@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TrainersPComponent } from './trainers-p/trainers-p.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    TrainersPComponent
+  ],
   imports: [
     CommonModule
   ]

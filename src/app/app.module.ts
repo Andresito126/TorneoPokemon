@@ -8,12 +8,14 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HomeModule } from './home/home.module';
 import { HttpClientModule } from '@angular/common/http';
 import { PokemonsModule } from './pokemons/pokemons.module';
+import { TrainersModule } from './trainers/trainers.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
-    NavBarComponent
+    NavBarComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -21,7 +23,8 @@ import { PokemonsModule } from './pokemons/pokemons.module';
     HomeModule,
     //para usar los servicios http
     HttpClientModule,
-    PokemonsModule
+    PokemonsModule,
+    TrainersModule
   ],
   providers: [],
   bootstrap: [AppComponent]
