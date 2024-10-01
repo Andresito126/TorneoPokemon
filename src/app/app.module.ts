@@ -9,12 +9,18 @@ import { HomeModule } from './home/home.module';
 import { HttpClientModule } from '@angular/common/http';
 import { PokemonsModule } from './pokemons/pokemons.module';
 import { TrainersModule } from './trainers/trainers.module';
+import { AddModalComponent } from './modals/add-modal/add-modal.component';
+import { DeleteModalComponent } from './modals/delete-modal/delete-modal.component';
+import { EditModalComponent } from './modals/edit-modal/edit-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
     NavBarComponent,
+    AddModalComponent,
+    DeleteModalComponent,
+    EditModalComponent,
 
   ],
   imports: [
