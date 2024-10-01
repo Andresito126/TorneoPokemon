@@ -1,6 +1,8 @@
 export interface Trainer {
-    id?: number; 
-    name: string;
-    region: string;
-    experience: number;
+    id_trainer: number;
+    user_name: string;  
+    age: number;        
+    region: string;     
+    experience: number; 
+    favorite_type: string; 
 }
