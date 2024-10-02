@@ -9,6 +9,7 @@ import { HomeModule } from './home/home.module';
 import { HttpClientModule } from '@angular/common/http';
 import { PokemonsModule } from './pokemons/pokemons.module';
 import { TrainersModule } from './trainers/trainers.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { TrainersModule } from './trainers/trainers.module';
     //para usar los servicios http
     HttpClientModule,
     PokemonsModule,
-    TrainersModule
+    TrainersModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,13 +1,14 @@
 <section>
     <app-add-new-button
-    [nameButton]="'Agregar Entrenador'"
+    [nameButton]="'+ Add Trainer'"
     (clickButton)="openModal()"
     ></app-add-new-button>
 </section>
 
 <app-add-modal 
-*ngIf="showModal" (trainerAdded)="onTrainerAdded($event)" (close)="closeModal()"
-(closeModal)="closeModal()"
+    *ngIf="showModal" 
+    (trainerAdded)="onTrainerAdded($event)" 
+    (closeModal)="closeModal()"
 ></app-add-modal>
 
 

@@ -1,35 +1,21 @@
 .addModal {
-    position: fixed; /* Posiciona el modal de forma fija */
-    top: 0; /* Alinea el modal en la parte superior */
-    left: 0; /* Alinea el modal a la izquierda */
-    width: 100%; /* Ocupa todo el ancho de la ventana */
-    height: 100%; /* Ocupa toda la altura de la ventana */
-    background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro semi-transparente */
-    display: flex; /* Usamos flexbox para centrar el contenido */
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
-    z-index: 1000; /* Asegura que el modal esté por encima de otros elementos */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
 }
 
 .modal_body {
-    background-color: #fff; /* Fondo blanco para el contenido del modal */
-    border-radius: 8px; /* Bordes redondeados */
-    padding: 20px; /* Espaciado interno */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para profundidad */
-    width: 400px; /* Ancho del modal */
-    max-width: 90%; /* Asegura que no sobrepase el ancho de la ventana en pantallas pequeñas */
-}
-
-button {
-    background-color: #ff4747; /* Color de fondo para el botón de cerrar */
-    color: white; /* Color del texto */
-    border: none; /* Sin borde */
-    border-radius: 4px; /* Bordes redondeados */
-    padding: 8px 12px; /* Espaciado interno */
-    cursor: pointer; /* Cambia el cursor a puntero */
-    margin-top: 15px; /* Margen superior */
-}
-
-button:hover {
-    background-color: #d94c4c; /* Color de fondo en hover */
+    background-color: #000000c2;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 50rem;
+    max-width: 90%;
 }

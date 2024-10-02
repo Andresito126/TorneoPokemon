@@ -17,11 +17,11 @@ export class TrainerService {
 }
 
   createTrainer(trainer: Trainer): Observable<Trainer> {
-    return this._http.post<Trainer>(`${this._apiUrl}/createTrainer`, trainer);
+    return this._http.post<Trainer>(`${this._apiUrl}/addTrainer`, trainer);
   }
 
   getTrainerById(id: number): Observable<Trainer> {
     return this._http.get<Trainer>(`${this._apiUrl}/getTrainer/${id}`);
-  }
+  } 
 
 }

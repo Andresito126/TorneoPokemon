@@ -1,11 +1,15 @@
 import { Component,EventEmitter, Output } from '@angular/core';
 import { Trainer } from '../../models/trainer';
+import { TrainerService } from '../../services/trainer.service';
 @Component({
   selector: 'app-add-modal',
   templateUrl: './add-modal.component.html',
   styleUrl: './add-modal.component.css'
 })
 export class AddModalComponent {
+
+  constructor(private trainerService: TrainerService) {} 
+
   @Output() trainerAdded = new EventEmitter<Trainer>();
   @Output() closeModal = new EventEmitter<void>();
 
@@ -33,11 +37,19 @@ export class AddModalComponent {
       favorite_type: this.favorite_type
     };
 
-    // evento para agregar un nuevo entrenador
-    this.trainerAdded.emit(newTrainer);
+     // llamar al servicio 
+     this.trainerService.createTrainer(newTrainer).subscribe(
+      (response: Trainer) => {
+        console.log('Entrenador creado:', response);
+        // emitir el evento del neuvo entrenador
+        this.trainerAdded.emit(response); 
+        this.resetForm(); 
+      },
+      (error) => {
+        console.error('Error al crear el entrenador:', error);
+      }
+    );
     
-    // limpiar el formulario
-    this.resetForm();
   }
 
   // limpiar el formulario

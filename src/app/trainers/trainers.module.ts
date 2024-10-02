@@ -5,6 +5,7 @@ import { AddNewButtonComponent } from './add-new-button/add-new-button.component
 import { AddModalComponent } from './modals/add-modal/add-modal.component';
 import { EditModalComponent } from './modals/edit-modal/edit-modal.component';
 import { DeleteModalComponent } from './modals/delete-modal/delete-modal.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -15,10 +16,11 @@ import { DeleteModalComponent } from './modals/delete-modal/delete-modal.compone
     AddModalComponent,
     EditModalComponent,
     DeleteModalComponent,
-    AddModalComponent
+    AddModalComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ]
 })
 export class TrainersModule { }

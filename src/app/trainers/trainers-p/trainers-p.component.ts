@@ -22,7 +22,6 @@ export class TrainersPComponent implements OnInit {
   }
 
   onTrainerAdded(trainer: Trainer) {
-   
     this.trainers.push(trainer); 
     this.closeModal();
   }
