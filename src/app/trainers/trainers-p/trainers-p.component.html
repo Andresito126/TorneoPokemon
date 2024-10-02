@@ -9,7 +9,15 @@
     *ngIf="showModal" 
     (trainerAdded)="onTrainerAdded($event)" 
     (closeModal)="closeModal()"
+
 ></app-add-modal>
+
+<app-delete-modal
+    *ngIf="showDeleteModal" 
+    [trainer]="selectedTrainer" 
+    (confirmDelete)="confirmDelete()"
+    (close)="closeDeleteModal()">
+</app-delete-modal>
 
 
 <main class="main-formulario">
@@ -65,7 +73,7 @@
                         <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                     </td>
                     <td class="px-8 py-4 ">
-                        <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</a>
+                        <button (click)="openDeleteModal(trainer)" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</button>
                     </td>
                 </tr>
             </tbody>

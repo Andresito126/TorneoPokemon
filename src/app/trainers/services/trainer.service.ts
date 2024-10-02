@@ -12,16 +12,23 @@ export class TrainerService {
 
   constructor(private _http: HttpClient) { }
 
-  getAllTrainers(): Observable<Trainer[]> {
-    return this._http.get<Trainer[]>(`${this._apiUrl}/getTrainers`); 
-}
-
+  
   createTrainer(trainer: Trainer): Observable<Trainer> {
     return this._http.post<Trainer>(`${this._apiUrl}/addTrainer`, trainer);
+  }
+  
+  getAllTrainers(): Observable<Trainer[]> {
+    return this._http.get<Trainer[]>(`${this._apiUrl}/getTrainers`); 
   }
 
   getTrainerById(id: number): Observable<Trainer> {
     return this._http.get<Trainer>(`${this._apiUrl}/getTrainer/${id}`);
   } 
+
+  deleteTrainer(id: number): Observable<void> {
+    return this._http.delete<void>(`${this._apiUrl}/deleteTrainer/${id}`);
+  }
+
+
 
 }
