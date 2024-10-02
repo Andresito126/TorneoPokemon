@@ -19,6 +19,11 @@
     (close)="closeDeleteModal()">
 </app-delete-modal>
 
+<app-edit-modal
+  [trainer]="selectedTrainer"
+  [isOpen]="showEditModal"
+  (trainerEdited)="onTrainerEdited($event)"
+></app-edit-modal>
 
 <main class="main-formulario">
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -70,8 +75,9 @@
                         {{ trainer.age }}
                     </td>
                     <td class="px-9 py-4 ">
-                        <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                        <button (click)="openEditModal(trainer)" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editar</button>
                     </td>
+                    
                     <td class="px-8 py-4 ">
                         <button (click)="openDeleteModal(trainer)" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</button>
                     </td>

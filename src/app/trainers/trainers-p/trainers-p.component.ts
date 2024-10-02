@@ -12,6 +12,7 @@ export class TrainersPComponent implements OnInit {
   showModal: boolean = false; 
   showDeleteModal: boolean = false;
   selectedTrainer: Trainer | null = null;
+  showEditModal: boolean = false;
         
           //ADD
 
@@ -51,11 +52,39 @@ export class TrainersPComponent implements OnInit {
             },
             error => {
                 console.error('Error al eliminar el entrenador:', error);
-                // Maneja el error según sea necesario (ej. mostrar un mensaje al usuario)
+               
             }
         );
     }
 }
+
+          //EDIT
+  openEditModal(trainer: Trainer) {
+    this.selectedTrainer = { ...trainer }; // crea una copia del entrenador 
+    this.showEditModal = true;
+  }
+
+  onTrainerEdited(editedTrainer: Trainer) {
+    if (editedTrainer.id_trainer) {
+      // actualiza la lista de entrenadores 
+      const index = this.trainers.findIndex(t => t.id_trainer === editedTrainer.id_trainer);
+      if (index !== -1) {
+        this.trainers[index] = editedTrainer; // reemplaza el entrenador editado
+      }
+  
+      // llama al servicio para actualizar el entrenador en la bd 
+      this.trainerService.updateTrainer(editedTrainer).subscribe(
+        response => {
+          console.log('Entrenador actualizado con éxito:', response);
+          this.showEditModal = false; 
+          this.selectedTrainer = null; 
+        },
+        error => {
+          console.error('Error al actualizar el entrenador:', error);
+        }
+      );
+    }
+  }
 
       
 

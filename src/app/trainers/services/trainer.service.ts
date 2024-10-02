@@ -25,6 +25,10 @@ export class TrainerService {
     return this._http.get<Trainer>(`${this._apiUrl}/getTrainer/${id}`);
   } 
 
+  updateTrainer(trainer: Trainer): Observable<Trainer> {
+    return this._http.put<Trainer>(`${this._apiUrl}/updateTrainer/${trainer.id_trainer}`, trainer);
+}
+
   deleteTrainer(id: number): Observable<void> {
     return this._http.delete<void>(`${this._apiUrl}/deleteTrainer/${id}`);
   }
