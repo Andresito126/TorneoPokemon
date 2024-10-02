@@ -14,7 +14,8 @@ import { DeleteModalComponent } from './modals/delete-modal/delete-modal.compone
     AddNewButtonComponent,
     AddModalComponent,
     EditModalComponent,
-    DeleteModalComponent
+    DeleteModalComponent,
+    AddModalComponent
   ],
   imports: [
     CommonModule

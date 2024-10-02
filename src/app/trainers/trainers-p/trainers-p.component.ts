@@ -8,6 +8,26 @@ import { Trainer } from '../models/trainer';
 })
 export class TrainersPComponent implements OnInit {
   trainers: Trainer[] = []; 
+  //modal
+
+  showModal: boolean = false; 
+  openModal() {
+    this.showModal = true; 
+    
+  }
+
+  closeModal() {
+    this.showModal = false; 
+    
+  }
+
+  onTrainerAdded(trainer: Trainer) {
+   
+    this.trainers.push(trainer); 
+    this.closeModal();
+  }
+
+  //////////////////////
 
   constructor(private trainerService: TrainerService) { }
 

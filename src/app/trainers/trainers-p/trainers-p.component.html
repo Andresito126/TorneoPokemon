@@ -1,8 +1,15 @@
 <section>
     <app-add-new-button
-    nameButton="+ Add Trainer"
+    [nameButton]="'Agregar Entrenador'"
+    (clickButton)="openModal()"
     ></app-add-new-button>
 </section>
+
+<app-add-modal 
+*ngIf="showModal" (trainerAdded)="onTrainerAdded($event)" (close)="closeModal()"
+(closeModal)="closeModal()"
+></app-add-modal>
+
 
 <main class="main-formulario">
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
