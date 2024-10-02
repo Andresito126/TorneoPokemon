@@ -12,11 +12,13 @@ import { TrainersModule } from './trainers/trainers.module';
 import { FormsModule } from '@angular/forms';
 import { TeamsModule } from './teams/teams.module';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
     NavBarComponent,
+   
 
 
   ],
