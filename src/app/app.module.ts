@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PokemonsModule } from './pokemons/pokemons.module';
 import { TrainersModule } from './trainers/trainers.module';
 import { FormsModule } from '@angular/forms';
+import { TeamsModule } from './teams/teams.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     PokemonsModule,
     TrainersModule,
-    FormsModule
+    FormsModule,
+    TeamsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
