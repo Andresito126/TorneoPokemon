@@ -4,4 +4,8 @@
     (clickButton)="openModal()"
     ></app-add-new-button>
 </section>
-<p>teams-p works!</p>
+<app-add-modal-teams 
+    *ngIf="showModal"
+    (teamAdded)="onTeamAdded($event)" 
+    (closeModal)="onClose()">
+</app-add-modal-teams>
