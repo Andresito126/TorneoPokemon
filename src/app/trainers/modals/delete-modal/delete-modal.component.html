@@ -1,0 +1,12 @@
+<div class="delete-trainer">
+    <div *ngIf="trainer" class="fixed inset-0 flex items-center justify-center z-50">
+        <div class="bg-stone-300 p-5 rounded shadow-lg">
+            <h2 class="text-lg font-semibold">Eliminar Entrenador</h2>
+            <p>¿Estás seguro de que deseas eliminar a {{ trainer.user_name }}?</p> 
+            <div class="mt-4 flex justify-end">
+                <button class="mr-2" (click)="onClose()">Cancelar</button>
+                <button (click)="onDelete()" class="bg-red-500 text-white px-3 py-1 rounded">Eliminar</button>
+            </div>
+        </div>
+    </div>
+    </div>

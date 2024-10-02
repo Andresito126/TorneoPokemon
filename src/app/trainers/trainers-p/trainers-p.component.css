@@ -1,0 +1,19 @@
+.main-formulario {
+    width: 95vw; /* Ancho del contenedor principal */
+    margin-left: 2.3rem;
+    padding: 20px;
+}
+
+.relative {
+    width: 100%; 
+    overflow-x: auto;
+   
+}
+
+table {
+    width: 100%;
+  
+}
+
+
+

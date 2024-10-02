@@ -1,0 +1,80 @@
+<div *ngIf="isOpen && trainer" class="editModal">
+    <div class="modal_body">
+        <form class="max-w-sm mx-auto" (ngSubmit)="onSubmit()">
+            <div class="mb-0">
+                <label for="user_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                    User Name
+                </label>
+                <input
+                    type="text"
+                    id="user_name"
+                    [(ngModel)]="trainer.user_name"
+                    name="user_name"
+                    required
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="User Name"
+                />
+            </div>
+
+            <div class="mb-0">
+                <label for="region" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                    Region
+                </label>
+                <input
+                    type="text"
+                    id="region"
+                    [(ngModel)]="trainer.region"
+                    name="region"
+                    required
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Region"
+                />
+            </div>
+
+            <div class="mb-0">
+                <label for="experience" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                    Experience
+                </label>
+                <input
+                    type="number"
+                    id="experience"
+                    [(ngModel)]="trainer.experience"
+                    name="experience"
+                    required
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Experience"
+                />
+            </div>
+
+            <div class="mb-0">
+                <label for="age" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                    Age
+                </label>
+                <input
+                    type="number"
+                    id="age"
+                    [(ngModel)]="trainer.age"
+                    name="age"
+                    required
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Age"
+                />
+            </div>
+
+            <div class="flex justify-center space-x-4 mt-4">
+                <button
+                    type="button"
+                    (click)="onClose()"
+                    class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
+                    x Cerrar
+                </button>
+
+                <button
+                    type="submit"
+                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    Guardar
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

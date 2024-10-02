@@ -1,0 +1,88 @@
+<section>
+    <app-add-new-button
+    [nameButton]="'+ Add Trainer'"
+    (clickButton)="openModal()"
+    ></app-add-new-button>
+</section>
+
+<app-add-modal 
+    *ngIf="showModal" 
+    (trainerAdded)="onTrainerAdded($event)" 
+    (closeModal)="closeModal()"
+
+></app-add-modal>
+
+<app-delete-modal
+    *ngIf="showDeleteModal" 
+    [trainer]="selectedTrainer" 
+    (confirmDelete)="confirmDelete()"
+    (close)="closeDeleteModal()">
+</app-delete-modal>
+
+<app-edit-modal
+  [trainer]="selectedTrainer"
+  [isOpen]="showEditModal"
+  (trainerEdited)="onTrainerEdited($event)"
+></app-edit-modal>
+
+<main class="main-formulario">
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        User Name
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        <div class="flex items-center">
+                            Region
+                        </div>
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        <div class="flex items-center">
+                            Experience
+                        </div>
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Age
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        <div class="flex items-center">
+                            Actions
+                            <span class="sr-only">Edit</span>
+                        </div>
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        <div class="flex items-center">
+                            Actions
+                            <span class="sr-only">Delete</span>
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let trainer of trainers" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{ trainer.user_name }}
+                    </th>
+                    <td class="px-6 py-4">
+                        {{ trainer.region }}
+                    </td>
+                    <td class="px-14 py-4">
+                        {{ trainer.experience }}
+                    </td>
+                    <td class="px-7 py-4">
+                        {{ trainer.age }}
+                    </td>
+                    <td class="px-9 py-4 ">
+                        <button (click)="openEditModal(trainer)" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editar</button>
+                    </td>
+                    
+                    <td class="px-8 py-4 ">
+                        <button (click)="openDeleteModal(trainer)" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
