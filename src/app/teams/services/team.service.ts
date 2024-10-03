@@ -27,13 +27,15 @@ getTeamById(id: number): Observable<Team> {
 }
 
 // actualizar un equipo
-updateTeam(id: number, team: Team): Observable<Team> {
-  return this._http.put<Team>(`${this._apiUrl}/${id}`, team);
+updateTeam( team: Team): Observable<Team> {
+  return this._http.put<Team>(`${this._apiUrl}/updateTeam/${team.id_team}`, team);
 }
+
+
 
 // eliminar un equipo
 deleteTeam(id: number): Observable<void> {
-  return this._http.delete<void>(`${this._apiUrl}/${id}`);
+  return this._http.delete<void>(`${this._apiUrl}/deleteTeam/${id}`);
 }
 
 }

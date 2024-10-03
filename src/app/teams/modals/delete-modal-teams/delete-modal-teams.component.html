@@ -1,1 +1,13 @@
-<p>delete-modal-teams works!</p>
+<div class="delete-team">
+    <div *ngIf="team" class="fixed inset-0 flex items-center justify-center z-50">
+        <div class="bg-stone-300 p-5 rounded shadow-lg">
+            <h2 class="text-lg font-semibold">Delete Team</h2>
+            <p>Are you sure "{{ team.team_name }}"?</p> 
+            <div class="mt-4 flex justify-end">
+                <button class="mr-2" (click)="onClose()">Cancel</button>
+                <button (click)="onDelete()" class="bg-red-500 text-white px-3 py-1 rounded">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+

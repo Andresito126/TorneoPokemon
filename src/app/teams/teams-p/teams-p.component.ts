@@ -15,6 +15,7 @@ export class TeamsPComponent implements OnInit {
   teams: Team[] = []; 
   pokemons: Pokemon[] = [];
 
+
   ngOnInit(): void {
     this.loadTeams();  
   }
@@ -65,25 +66,10 @@ onDeletePokemon(pokemonId: number) {
   });
 }
 
-
-  // Eliminar un equipo
-  onDeleteTeam(teamId?: number) {
-    if (teamId) {  // verifica que team id no sea undefined
-      this.teamService.deleteTeam(teamId).subscribe(() => {
-        console.log('equipo eliminado:', teamId);
-        this.loadTeams();  // eecargar los equipos de eliminar un equipo
-      });
-    }
-  }
-
-  
-
-
   //MODALS
   selectedPokemon: Pokemon | null = null;
   showModal: boolean = false;
-  showEditModal: boolean = false;
-  showDeleteConfirmation: boolean = false;
+
   
 
           //OPEN MODAL ADD TRAINER
@@ -100,34 +86,50 @@ onDeletePokemon(pokemonId: number) {
     this.loadTeams();  // recargar los equipos despues de añadir 
   }
 
+  // DELETE TEAM
 
-            //OPEN MODAL POKEMONS ADD-EDIT-DELETE
+  showDeleteModal: boolean = false; 
+  selectedTeam: Team | null = null; 
+
+  onDeleteTeam(team: Team) {
+    this.selectedTeam = team; // asigna el equipo seleccionado
+    this.showDeleteModal = true; // muestra el modal de eliminacion
+  }
   
-    openEditModal() {
-    this.showEditModal = true;
-  }
 
-  closeEditModal() {
-    this.showEditModal = false;
-    this.selectedPokemon = null;
-  }
-
-  closeDeleteConfirmation() {
-    this.showDeleteConfirmation = false;
-    this.selectedPokemon = null;
-  }
-
-  openDeleteConfirmation(pokemon: Pokemon) {
-    // logica para abrir la confirmacion de eliminacion
-    console.log('eliminar pokemon:', pokemon);
-  }
-
-  // añadir un pokemon a un equipo
-  onAddPokemonToTeam(teamId: number, pokemonId: number) {
-    this.pokemonService.addPokemonToTeam(teamId, pokemonId).subscribe(() => {
-      console.log('pokemon añadido al equipo:', pokemonId);
-      this.loadTeams(); // recargar los equipos
+  confirmDelete() {
+    this.teamService.deleteTeam(this.selectedTeam!.id_team!).subscribe(() => {
+      console.log('equipo eliminado:', this.selectedTeam!.id_team); //  operador asercion no nula
+      this.loadTeams();  
+      this.closeDeleteModal(); 
     });
   }
-}
 
+  closeDeleteModal() {
+    this.showDeleteModal = false;
+    this.selectedTeam = null; 
+  }
+
+    //EDIT 
+
+    isEditModalOpen: boolean = false;
+
+    openEditModal(team: Team) {
+      this.selectedTeam = team; 
+      this.isEditModalOpen = true; 
+    }
+  
+    
+    closeEditModal() {
+      this.isEditModalOpen = false;
+      this.selectedTeam = null;
+    }
+
+    onTeamEdited(updatedTeam: Team) {
+      console.log('Equipo actualizado:', updatedTeam);
+      this.loadTeams();  
+      this.closeEditModal();  
+    }
+  
+
+}
