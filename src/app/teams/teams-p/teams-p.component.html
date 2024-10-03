@@ -1,0 +1,64 @@
+<section>
+    <app-add-new-button
+        [nameButton]="'+ Add Team'"
+        (clickButton)="openModal()"
+    ></app-add-new-button>
+</section>
+
+<app-add-modal-teams 
+    *ngIf="showModal"
+    (teamAdded)="onTeamAdded($event)" 
+    (closeModal)="onClose()">
+</app-add-modal-teams>
+
+<main class="flex flex-wrap justify-center">
+    <div *ngFor="let team of teams" class="max-w-sm rounded-lg overflow-hidden shadow-lg bg-white transition-transform transform hover:scale-105 hover:shadow-2xl hover:bg-gray-100 m-4">
+        <div class="px-6 py-4">
+            <div class="font-bold text-xl mb-2 text-center text-blue-600">{{ team.team_name }}</div>
+            <p class="text-gray-700 text-base mb-2">Description: {{ team.description }}</p>
+            <p class="text-gray-600 text-sm">Battle Points: <span class="font-semibold">{{ team.battle_points }}</span></p>
+            <p class="text-gray-600 text-sm">Creation Date: <span class="font-semibold">{{ team.creation_date }}</span></p>
+        </div>
+
+        <div class="px-6 pt-4 pb-2 border-t">
+            <h3 class="font-semibold text-lg mb-2">Pokémons:</h3>
+            <ul class="list-disc pl-5 max-h-40 overflow-auto"> 
+                <li *ngFor="let pokemon of team.pokemons" class="text-gray-700 flex justify-between items-center mb-2">
+                    <span class="truncate">{{ pokemon.pokemon_name }}</span> 
+                    <button 
+                        (click)="onDeletePokemon(pokemon.pokemon_id)"
+                        class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-1 rounded text-sm">
+                        Delete
+                    </button>
+                </li>
+            </ul>
+        </div>
+
+        <div class="flex justify-between px-6 py-4 border-t">
+            <button 
+                (click)="openEditModal(team)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Edit Team
+            </button>
+
+            <button 
+                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" 
+                (click)="onDeleteTeam(team)">
+                Delete Team
+            </button>
+        </div>
+    </div>
+</main>
+
+<app-delete-modal-teams 
+    *ngIf="showDeleteModal" 
+    [team]="selectedTeam" 
+    (confirmDelete)="confirmDelete()" 
+    (close)="closeDeleteModal()">
+</app-delete-modal-teams>
+
+<app-edit-modal-teams 
+    *ngIf="isEditModalOpen" 
+    [teamToEdit]="selectedTeam" 
+    (teamEdited)="onTeamEdited($event)" 
+    (closeModal)="closeEditModal()">
+</app-edit-modal-teams>
