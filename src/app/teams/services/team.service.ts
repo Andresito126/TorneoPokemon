@@ -14,9 +14,8 @@ export class TeamService {
 
 // crear un nuevo equipo
 createTeam(team: Team): Observable<Team> {
-  return this._http.post<Team>(`${this._apiUrl}/getTeams`, team);
+  return this._http.post<Team>(`${this._apiUrl}/addTeam`, team);
 }
-
 // obtener todos los equipos
 getTeams(): Observable<Team[]> {
   return this._http.get<Team[]>('http://localhost:3000/team/getTeams');

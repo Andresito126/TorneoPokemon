@@ -1,94 +1,108 @@
 <div class="addModal">
-    <div class="modal_body">
-      <form class="max-w-sm mx-auto" (ngSubmit)="onSubmit()">
-        <div class="mb-0">
-          <label for="team_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-            Team Name
-          </label>
-          <input
-            type="text"
-            id="team_name"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Team Name"
-            required
-            [(ngModel)]="team_name"
-            name="team_name"
-          />
-        </div>
+  <div class="modal_body">
+    <form class="max-w-sm mx-auto" (ngSubmit)="onSubmit()">
+      <div class="mb-0">
+        <label for="trainer_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+          ID del Entrenador
+        </label>
+        <input
+          type="number"
+          id="trainer_id"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="ID del Entrenador"
+          required
+          [(ngModel)]="trainer_id"
+          name="trainer_id"
+        />
+      </div>
 
-        <div class="mb-0">
-          <label for="creation_date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-            Creation Date
-          </label>
-          <input
-            type="date"
-            id="creation_date"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            required
-            [(ngModel)]="creation_date"
-            name="creation_date"
-          />
-        </div>
+      <div class="mb-0">
+        <label for="team_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+          Team Name
+        </label>
+        <input
+          type="text"
+          id="team_name"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Team Name"
+          required
+          [(ngModel)]="team_name"
+          name="team_name"
+        />
+      </div>
 
-        <div class="mb-0">
-          <label for="battle_points" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-            Battle Points
-          </label>
-          <input
-            type="number"
-            id="battle_points"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Battle Points"
-            required
-            [(ngModel)]="battle_points"
-            name="battle_points"
-          />
-        </div>
+      <div class="mb-0">
+        <label for="creation_date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+          Creation Date
+        </label>
+        <input
+          type="date"
+          id="creation_date"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          required
+          [ngModel]="creation_date | date:'yyyy-MM-dd'" 
+          (ngModelChange)="onDateChange($event)" 
+          name="creation_date"
+        />
+      </div>
 
-        <div class="mb-0">
-          <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-            Description
-          </label>
-          <textarea
-            id="description"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Team Description"
-            required
-            [(ngModel)]="description"
-            name="description">
-          </textarea>
-        </div>
+      <div class="mb-0">
+        <label for="battle_points" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+          Battle Points
+        </label>
+        <input
+          type="number"
+          id="battle_points"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Battle Points"
+          required
+          [(ngModel)]="battle_points"
+          name="battle_points"
+        />
+      </div>
 
-        <div class="mb-0">
-          <label for="total_pokemon" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-            Total Pokémon
-          </label>
-          <input
-            type="number"
-            id="total_pokemon"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Total Pokémon"
-            required
-            [(ngModel)]="total_pokemon"
-            name="total_pokemon"
-          />
-        </div>
+      <div class="mb-0">
+        <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+          Description
+        </label>
+        <textarea
+          id="description"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Team Description"
+          required
+          [(ngModel)]="description"
+          name="description">
+        </textarea>
+      </div>
 
-        <div class="flex justify-center space-x-4 mt-4">
-          <button
-            type="submit"
-            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-            + Submit
-          </button>
-            <button
-                (click)="onClose()"
-                class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
-                x Cerrar
-            </button>
-      
-      
-        </div>
-      </form>
-    </div>
+      <div class="mb-0">
+        <label for="total_pokemon" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+          Total Pokémon
+        </label>
+        <input
+          type="number"
+          id="total_pokemon"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Total Pokémon"
+          required
+          [(ngModel)]="total_pokemon"
+          name="total_pokemon"
+        />
+      </div>
+
+      <div class="flex justify-center space-x-4 mt-4">
+        <button
+          type="submit"
+          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+          + Submit
+        </button>
+        <button
+          type="button" 
+          (click)="onClose()"
+          class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
+          x Cerrar
+        </button>
+      </div>
+    </form>
+  </div>
 </div>
-

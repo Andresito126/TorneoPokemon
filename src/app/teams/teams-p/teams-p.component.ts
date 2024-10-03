@@ -56,15 +56,13 @@ loadPokemonsByTeamId(teamId: number) {
 
 
 // eliminar un pokemon de un equipo
-onDeletePokemon(pokemonId: number, teamId: number) {
-    if (teamId) {  // team id valido?
-        this.pokemonService.removePokemonFromTeam(teamId, pokemonId).subscribe(() => {
-            console.log('pokemon eliminado:', pokemonId);
-            this.loadTeams();  // recargar los equipos despues de eliminar un pokemon
-        });
-    } else {
-        console.error('id de equipo no valido:', teamId);
-    }
+onDeletePokemon(pokemonId: number) {
+  this.pokemonService.removePokemonFromTeam(pokemonId).subscribe(() => {
+      console.log('pokemon eliminado:', pokemonId);
+      this.loadTeams();  // recargar los equipos después de eliminar un pokemon
+  }, (error) => {
+      console.error('error al eliminar pokemon:', error);
+  });
 }
 
 

@@ -10,7 +10,8 @@ export class PokemonService {
 
   private _apiUrl = 'http://localhost:3000/pokemonTeam';
 
-  constructor(private _http: HttpClient) {}
+  constructor(private _http: HttpClient) {} 
+
 
   // obtener pokemon por id de equipo
   getPokemonsByTeamId(teamId: number): Observable<Pokemon[]> {
@@ -18,15 +19,19 @@ export class PokemonService {
     return this._http.get<Pokemon[]>(`${this._apiUrl}/getPokemonsByTeamId/${teamId}`);
 }
 
+
+
   // añadir pokemon a un equipo
   addPokemonToTeam(teamId: number, pokemonId: number): Observable<any> {
     return this._http.post(`${this._apiUrl}/addPokemonToTeam`, { team_id: teamId, pokemon_id: pokemonId });
   }
 
   // eliminar pokemon de un equipo
-  removePokemonFromTeam(teamId: number, pokemonId: number): Observable<any> {
-    return this._http.delete(`${this._apiUrl}/removePokemonFromTeam/${teamId}/${pokemonId}`);
-  }
+  removePokemonFromTeam(id: number): Observable<any> {
+    return this._http.delete(`${this._apiUrl}/removePokemonFromTeam/${id}`);
+}
+  
+
 
 }
     

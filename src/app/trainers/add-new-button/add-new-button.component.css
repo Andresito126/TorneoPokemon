@@ -1,6 +1,6 @@
 .container-AddButton{
     background-color: red;
-    width: 100vw;
+    max-width: 100vw;
     height: 6.25rem;
     display: flex;
 }
