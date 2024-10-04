@@ -42,6 +42,15 @@
                 Delete Team
             </button>
         </div>
+
+        <div class="flex justify-between px-6 py-4">
+            <button 
+            (click)="openEditPokemonModal(team)" 
+            class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded w-64">
+            Edit Pokémon
+        </button>
+        </div>
+        
     </div>
 </main>
 
@@ -58,3 +67,10 @@
     (teamEdited)="onTeamEdited($event)" 
     (closeModal)="closeEditModal()">
 </app-edit-modal-teams>
+
+<app-edit-pokemon-modal
+    *ngIf="isEditPokemonModalOpen"
+    [pokemonTeam]="teamToEdit.pokemons" 
+    (pokemonsUpdated)="onPokemonsUpdated($event)"
+    (closeModal)="onClosePokemonModal()"
+></app-edit-pokemon-modal>

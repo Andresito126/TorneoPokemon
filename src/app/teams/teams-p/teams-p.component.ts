@@ -20,6 +20,10 @@ export class TeamsPComponent implements OnInit {
     this.loadTeams();  
   }
 
+  openEditPokemonModal(team: Team) {
+    this.teamToEdit = team; 
+    this.isEditPokemonModalOpen = true; 
+}
 
   loadTeams() {
     this.teamService.getTeams().subscribe(
@@ -110,7 +114,16 @@ onDeletePokemon(pokemonId: number) {
     this.selectedTeam = null; 
   }
 
+  teamToEdit: any = null;
     //EDIT 
+
+    isEditPokemonModalOpen: boolean = false;
+    onPokemonsUpdated(updatedPokemons: number[]): void {
+      this.teamToEdit.pokemon_ids = updatedPokemons;
+    }
+    onClosePokemonModal(): void {
+      this.isEditPokemonModalOpen = false;
+    }
 
     isEditModalOpen: boolean = false;
 
