@@ -6,6 +6,7 @@ import { AddModalTeamsComponent } from './modals/add-modal-teams/add-modal-teams
 import { EditModalTeamsComponent } from './modals/edit-modal-teams/edit-modal-teams.component';
 import { DeleteModalTeamsComponent } from './modals/delete-modal-teams/delete-modal-teams.component';
 import { FormsModule } from '@angular/forms';
+import { EditPokemonModalComponent } from './modals/edit-pokemon-modal/edit-pokemon-modal.component';
 
 
 
@@ -14,7 +15,8 @@ import { FormsModule } from '@angular/forms';
     TeamsPComponent,
     AddModalTeamsComponent,
     EditModalTeamsComponent,
-    DeleteModalTeamsComponent
+    DeleteModalTeamsComponent,
+    EditPokemonModalComponent
   ],
   imports: [
     CommonModule,
