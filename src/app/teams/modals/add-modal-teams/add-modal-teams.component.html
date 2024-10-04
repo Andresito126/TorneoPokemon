@@ -90,6 +90,65 @@
         />
       </div>
 
+      <div class="mb-0">
+        <label for="pokemon1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Selecciona un Pokémon</label>
+        <select id="pokemon1" 
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                [(ngModel)]="selectedPokemonId1"
+                name="selectedPokemonId1">
+          <option value="">-</option>
+          <option *ngFor="let pokemon of arrayPokemons" 
+                  [value]="pokemon.pokemon_id"> 
+            {{ pokemon.pokemon_name }} 
+          </option>
+        </select>
+      </div>
+      
+      <div class="mb-0">
+        <label for="pokemon2" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Selecciona otro Pokémon</label>
+        <select id="pokemon2" 
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                [(ngModel)]="selectedPokemonId2"
+                name="selectedPokemonId2">
+          <option value="">-</option>
+          <option *ngFor="let pokemon of arrayPokemons" 
+                  [value]="pokemon.pokemon_id"> 
+            {{ pokemon.pokemon_name }} 
+          </option>
+        </select>
+      </div>
+      
+      <div class="mb-0">
+        <label for="pokemon3" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Selecciona otro Pokémon</label>
+        <select id="pokemon3" 
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                [(ngModel)]="selectedPokemonId3"
+                name="selectedPokemonId3">
+          <option value="">-</option>
+          <option *ngFor="let pokemon of arrayPokemons" 
+                  [value]="pokemon.pokemon_id"> 
+            {{ pokemon.pokemon_name }} 
+          </option>
+        </select>
+      </div>
+      
+      <div class="mb-0">
+        <label for="pokemon4" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Selecciona otro Pokémon</label>
+        <select id="pokemon4" 
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                [(ngModel)]="selectedPokemonId4"
+                name="selectedPokemonId4">
+          <option value="">-</option>
+          <option *ngFor="let pokemon of arrayPokemons" 
+                  [value]="pokemon.pokemon_id"> 
+            {{ pokemon.pokemon_name }} 
+          </option>
+        </select>
+      </div>
+      
+      
+
+
       <div class="flex justify-center space-x-4 mt-4">
         <button
           type="submit"

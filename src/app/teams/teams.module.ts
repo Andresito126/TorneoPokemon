@@ -20,6 +20,6 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     TrainersModule,
     FormsModule
-  ]
+  ],
 })
 export class TeamsModule { }

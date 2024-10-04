@@ -26,11 +26,6 @@
             <ul class="list-disc pl-5 max-h-40 overflow-auto"> 
                 <li *ngFor="let pokemon of team.pokemons" class="text-gray-700 flex justify-between items-center mb-2">
                     <span class="truncate">{{ pokemon.pokemon_name }}</span> 
-                    <button 
-                        (click)="onDeletePokemon(pokemon.pokemon_id)"
-                        class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-1 rounded text-sm">
-                        Delete
-                    </button>
                 </li>
             </ul>
         </div>
