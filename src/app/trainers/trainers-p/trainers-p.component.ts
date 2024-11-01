@@ -93,10 +93,8 @@ export class TrainersPComponent implements OnInit {
   constructor(private trainerService: TrainerService) { }
 
   ngOnInit(): void {
-    this.getTrainers();
-  }
 
-  getTrainers(): void {
+
     this.trainerService.getAllTrainers().subscribe(
       (data: Trainer[]) => {
         this.trainers = data; 
