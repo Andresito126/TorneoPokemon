@@ -11,6 +11,7 @@ import { PokemonsModule } from './pokemons/pokemons.module';
 import { TrainersModule } from './trainers/trainers.module';
 import { FormsModule } from '@angular/forms';
 import { TeamsModule } from './teams/teams.module';
+import { BlackListModule } from './black-list/black-list.module';
 
 
 @NgModule({
@@ -18,9 +19,6 @@ import { TeamsModule } from './teams/teams.module';
     AppComponent,
     FooterComponent,
     NavBarComponent,
-   
-
-
   ],
   imports: [
     BrowserModule,
@@ -31,7 +29,8 @@ import { TeamsModule } from './teams/teams.module';
     PokemonsModule,
     TrainersModule,
     FormsModule,
-    TeamsModule
+    TeamsModule,
+    BlackListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
