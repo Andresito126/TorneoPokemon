@@ -14,6 +14,19 @@ export class TrainersPComponent implements OnInit {
   selectedTrainer: Trainer | null = null;
   showEditModal: boolean = false;
         
+
+  searchQuery: string = '';
+
+    // foltrrador
+    filteredTrainers() {
+        return this.trainers.filter(trainer =>
+            trainer.user_name.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+            trainer.region.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+            trainer.experience.toString().includes(this.searchQuery) ||
+            trainer.age.toString().includes(this.searchQuery)
+        );
+    }
+
           //ADD
 
   openModal() {

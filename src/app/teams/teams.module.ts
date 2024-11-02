@@ -10,6 +10,7 @@ import { EditPokemonModalComponent } from './modals/edit-pokemon-modal/edit-poke
 
 
 
+
 @NgModule({
   declarations: [
     TeamsPComponent,
@@ -23,5 +24,8 @@ import { EditPokemonModalComponent } from './modals/edit-pokemon-modal/edit-poke
     TrainersModule,
     FormsModule
   ],
+  exports:[
+   
+  ]
 })
 export class TeamsModule { }
