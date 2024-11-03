@@ -7,27 +7,47 @@ import { TournamentService } from '../../services/tournament.service';
   styleUrl: './add-tournament.component.css'
 })
 export class AddTournamentComponent  {
- @Output() closeModal = new EventEmitter<void>();
-  @Output() tournamentAdded = new EventEmitter<void>(); 
+  @Output() closeModal = new EventEmitter<void>();
+  tournamentName = '';
+  startDate: string | null = null;
+  endDate: string | null = null;
+  teams: any[] = [];  // Lista de equipos disponibles
+  selectedTeams: number[] = []; // IDs de los equipos seleccionados
 
-  newTournament: Tournament = {
-    name: '',
-    start_date: new Date(),
-    end_date: new Date(),
-    status: 'ongoing'
-  };
+  @Output() tournamentCreated = new EventEmitter<void>();
 
   constructor(private tournamentService: TournamentService) {}
 
+  ngOnInit(): void {
+    this.loadTeams(); // Cargar los equipos al iniciar el componente
+  }
 
-
-  onSubmitTournament() {
-    this.tournamentService.addTournament(this.newTournament).subscribe(() => {
-      this.tournamentAdded.emit(); 
-      this.close();
+  loadTeams(): void {
+    this.tournamentService.getAllTeams().subscribe((data) => {
+      this.teams = data;
     });
   }
 
+  toggleTeamSelection(teamId: number): void {
+    if (this.selectedTeams.includes(teamId)) {
+      this.selectedTeams = this.selectedTeams.filter(id => id !== teamId);
+    } else {
+      this.selectedTeams.push(teamId);
+    }
+  }
+
+  onSubmitTournament(): void {
+    const tournamentData = {
+      name: this.tournamentName,
+      start_date: this.startDate,
+      end_date: this.endDate,
+      teamIds: this.selectedTeams, // Agregamos los IDs de equipos seleccionados
+    };
+
+    this.tournamentService.createTournament(tournamentData).subscribe(() => {
+      this.tournamentCreated.emit();
+    });
+  }
   close() {
     this.closeModal.emit();
   }

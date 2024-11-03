@@ -27,4 +27,12 @@ export class TournamentService {
   setWinner(matchId: number): Observable<any> {
     return this.http.put<any>(`${this.apiUrl}/matches/${matchId}/winner`, {}); 
   }
+  getAllTeams(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/teams`);
+  }
+  
+createTournament(tournamentData: any): Observable<any> {
+  return this.http.post(`${this.apiUrl}/tournaments`, tournamentData);
+}
+
 }

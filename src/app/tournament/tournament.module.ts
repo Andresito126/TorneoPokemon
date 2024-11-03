@@ -8,10 +8,11 @@ import { AddTournamentComponent } from './modals/add-tournament/add-tournament.c
 
 
 
+
 @NgModule({
   declarations: [
     TournamentPageComponent,
-    AddTournamentComponent
+    AddTournamentComponent,
   ],
   imports: [
     CommonModule,

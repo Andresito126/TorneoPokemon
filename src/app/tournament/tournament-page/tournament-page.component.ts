@@ -9,8 +9,10 @@ import { TournamentService } from '../services/tournament.service';
 export class TournamentPageComponent implements OnInit{
   showModal: boolean = false;
   showAddTournamentModal = false;
+  showAddTeamsModal = false;
   tournaments: any[] = [];
   selectedTournamentMatches: any[] = [];
+  
 
   constructor(private tournamentService: TournamentService) {}
 
@@ -30,6 +32,11 @@ export class TournamentPageComponent implements OnInit{
 
   closeModal() {
     this.showAddTournamentModal = false;
+  }
+
+  openAddTeamsModal(tournamentId: number): void {
+   
+    this.showAddTeamsModal = true;
   }
 
   viewMatches(tournamentId: number): void {
