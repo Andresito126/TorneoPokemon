@@ -1,0 +1,66 @@
+<div class="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50"> 
+    <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+      <h2 class="text-2xl font-semibold mb-4 text-center">Agregar Torneo</h2>
+      
+      <form (ngSubmit)="onSubmitTournament()" #tournamentForm="ngForm" class="space-y-4">
+        <div>
+          <label for="name" class="block text-sm font-medium text-gray-700">Nombre del Torneo</label>
+          <input
+            type="text"
+            id="name"
+            [(ngModel)]="newTournament.name"
+            name="name"
+            required
+            class="mt-1 p-2 border rounded w-full"
+            placeholder="Nombre del Torneo"
+          />
+        </div>
+        <div>
+          <label for="start_date" class="block text-sm font-medium text-gray-700">Fecha de Inicio</label>
+          <input
+            type="date"
+            id="start_date"
+            [(ngModel)]="newTournament.start_date"
+            name="start_date"
+            required
+            class="mt-1 p-2 border rounded w-full"
+          />
+        </div>
+        <div>
+          <label for="end_date" class="block text-sm font-medium text-gray-700">Fecha de Finalización</label>
+          <input
+            type="date"
+            id="end_date"
+            [(ngModel)]="newTournament.end_date"
+            name="end_date"
+            class="mt-1 p-2 border rounded w-full"
+          />
+        </div>
+        <div>
+          <label for="status" class="block text-sm font-medium text-gray-700">Estado</label>
+          <select
+            id="status"
+            [(ngModel)]="newTournament.status"
+            name="status"
+            required
+            class="mt-1 p-2 border rounded w-full"
+          >
+            <option value="ongoing">En curso</option>
+            <option value="completed">Completado</option>
+          </select>
+        </div>
+  
+        <div class="flex justify-end space-x-2 mt-4">
+          <button (click)="close()" class="text-red-500 mt-4">Cerrar</button>
+          <button
+            type="submit"
+            class="p-2 bg-blue-500 text-white rounded hover:bg-blue-700"
+            [disabled]="!tournamentForm.valid"
+          >
+            Agregar Torneo
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+      

@@ -1,0 +1,65 @@
+<app-add-new-button
+[nameButton]="' + Add Torneo'"
+(clickButton)="openModal()"
+></app-add-new-button>
+<h1 class="text-3xl font-bold text-center text-blue-600 mb-6">Lista de Torneos</h1>
+<div class="p-6 bg-gray-100 min-h-screen">
+
+  <app-add-tournament 
+    *ngIf="showAddTournamentModal"
+    (closeModal)="showAddTournamentModal = false"
+    (tournamentAdded)="loadTournaments()"
+  ></app-add-tournament>
+
+
+  <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mt-6">
+    <div
+      *ngFor="let tournament of tournaments"
+      class="bg-white shadow-md rounded-lg p-4 transition duration-300 ease-in-out transform hover:scale-105"
+    >
+      <h2 class="text-xl font-semibold text-gray-800 mb-2">{{ tournament.name }}</h2>
+      <p class="text-gray-600"><strong>Inicio:</strong> {{ tournament.start_date | date }}</p>
+      <p class="text-gray-600"><strong>Estado:</strong> {{ tournament.status }}</p>
+
+    
+      <div class="mt-4">
+        <button
+          (click)="viewMatches(tournament.id_tournament)"
+          class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 w-full"
+        >
+          Ver Partidos
+        </button>
+      </div>
+
+      
+      <div class="mt-4">
+        <button
+          (click)="deleteTournament(tournament.id_tournament)"
+          class="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 w-full"
+        >
+          Eliminar
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <div *ngIf="selectedTournamentMatches.length" class="mt-10">
+    <h2 class="text-2xl font-bold text-blue-600">Partidos del Torneo</h2>
+    <div class="grid gap-6 mt-4">
+      <div *ngFor="let match of selectedTournamentMatches" class="bg-white shadow p-4 rounded">
+        <p class="text-lg font-semibold">Partido {{ match.id_match }}</p>
+        <p>Fecha: {{ match.match_date | date }}</p>
+        <p>Ronda: {{ match.round }}</p>
+
+      
+        <button
+          (click)="setWinner(match.id_match)"
+          class="mt-4 bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
+        >
+          Seleccionar Ganador
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
