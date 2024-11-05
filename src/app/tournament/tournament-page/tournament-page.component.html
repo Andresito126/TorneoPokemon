@@ -1,45 +1,36 @@
 <app-add-new-button
-[nameButton]="'+ Add Torneo'"
-(clickButton)="openModal()"
+  [nameButton]="'+ Add Tournament'"
+  (clickButton)="openModal()"
 ></app-add-new-button>
 
-<app-add-tournament 
+<app-add-tournament
   *ngIf="showAddTournamentModal"
-  (closeModal)="showAddTournamentModal = false"
+  (closeModal)="closeModal()"
   (tournamentAdded)="loadTournaments()">
 </app-add-tournament>
 
 <h1 class="text-3xl font-bold text-center text-blue-600 mb-6">Lista de Torneos</h1>
-<div class="p-6 bg-gray-100 min-h-screen">
-    
 
-  
-    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-      <!-- Cada torneo se muestra como una tarjeta -->
-      <div
-        *ngFor="let tournament of tournaments"
-        class="bg-white shadow-md rounded-lg p-4 transition duration-300 ease-in-out transform hover:scale-105"
-      >
-        <h2 class="text-xl font-semibold text-gray-800 mb-2">{{ tournament.name }}</h2>
-        <p class="text-gray-600"><strong>Inicio:</strong> {{ tournament.start_date | date }}</p>
-        <p class="text-gray-600"><strong>Estado:</strong> {{ tournament.status }}</p>
-        
-        <div class="mt-4 flex justify-between">
-          <button
-            (click)="viewMatches(tournament.id_tournament)"
-            class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-          >
-            Ver Partidos
-          </button>
-          <button
-            (click)="deleteTournament(tournament.id_tournament)"
-            class="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600"
-          >
-            Eliminar
-          </button>
-        </div>
+<div class="p-6 bg-gray-100 min-h-screen">
+  <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+    <div *ngFor="let tournament of tournaments" class="bg-white shadow-md rounded-lg p-4 transition duration-300 ease-in-out transform hover:scale-105">
+      <h2 class="text-xl font-semibold text-gray-800 mb-2">{{ tournament.name }}</h2>
+      <p class="text-gray-600"><strong>Inicio:</strong> {{ tournament.start_date | date }}</p>
+      <p class="text-gray-600"><strong>Estado:</strong> {{ tournament.status }}</p>
+
+      <div class="mt-4 flex justify-between">
+        <button (click)="viewMatches(tournament.id_tournament)" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+          Ver Partidos
+        </button>
+        <button (click)="deleteTournament(tournament.id_tournament)" class="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600">
+          Eliminar
+        </button>
       </div>
     </div>
   </div>
-  
-  
+
+  <app-tournament-matches
+    *ngIf="selectedTournamentId"
+    [tournamentId]="selectedTournamentId">
+  </app-tournament-matches>
+</div>

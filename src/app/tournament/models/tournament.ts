@@ -1,7 +1,9 @@
 export interface Tournament {
-    id_tournament?: number;
+    id?: number;
     name: string;
-    start_date: Date;
-    end_date?: Date;
-    status: 'ongoing' | 'completed';
-}
+    start_date: string;
+    end_date: string;
+    teams: number[];
+    status: string;  
+  }
+  

@@ -1,0 +1,57 @@
+<div class="p-6 bg-gray-100 rounded-lg shadow-md">
+  <h3 class="text-xl font-semibold">Ganador del Torneo</h3>
+  <p class="mt-4 text-lg font-semibold text-center">{{ tournamentWinner }}</p>
+
+  <div *ngIf="matches.length > 0; else noMatches">
+    <h2 class="text-2xl font-bold mb-4">Partidos del Torneo</h2>
+    <ul class="space-y-2">
+      <li *ngFor="let match of matches" class="p-4 bg-white rounded-lg shadow hover:shadow-lg transition">
+        Equipo <span class="font-semibold">{{ match.team1_id }}</span> vs Equipo <span class="font-semibold">{{ match.team2_id }}</span> - 
+        <strong class="ml-2 text-green-600">Ganador: {{ match.winner }}</strong>
+      </li>
+    </ul>
+  </div>
+  <ng-template #noMatches>
+    <p class="text-red-500 font-semibold">No hay partidos disponibles para este torneo.</p>
+  </ng-template>
+
+  <h3 class="text-xl font-semibold mt-6">Agregar Partido</h3>
+  <form (ngSubmit)="onSubmitMatch()" class="mt-4 bg-white p-4 rounded-lg shadow-md">
+    <label class="block mb-2">
+      <span class="text-gray-700">Equipo 1:</span>
+      <select [(ngModel)]="team1_id" name="team1_id" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+        <option *ngFor="let team of teams" [value]="team">{{ team }}</option>
+      </select>
+    </label>
+    
+    <label class="block mb-2">
+      <span class="text-gray-700">Equipo 2:</span>
+      <select [(ngModel)]="team2_id" name="team2_id" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+        <option *ngFor="let team of teams" [value]="team">{{ team }}</option>
+      </select>
+    </label>
+
+    <label class="block mb-2">
+      <span class="text-gray-700">Ganador:</span>
+      <select [(ngModel)]="winner" name="winner" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+        <option *ngFor="let team of teams" [value]="team">{{ team }}</option>
+      </select>
+    </label>
+    
+    <button type="submit" class="mt-4 bg-blue-600 text-white font-bold py-2 px-4 rounded hover:bg-blue-700 transition">Agregar Partido</button>
+  </form>
+
+  <h4 class="text-lg font-semibold mt-6">Equipos del Torneo</h4>
+  <ul class="list-disc pl-5">
+    <li *ngFor="let team of teams" class="text-gray-700">Equipo ID: {{ team }}</li>
+  </ul>
+
+  <h3 class="text-xl font-semibold mt-6">Declarar Ganador del Torneo</h3>
+  <label class="block mb-2">
+    <span class="text-gray-700">Ganador del Torneo:</span>
+    <select [(ngModel)]="tournamentWinner" name="tournamentWinner" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
+      <option *ngFor="let team of teams" [value]="team">{{ team }}</option>
+    </select>
+  </label>
+  <button (click)="declareTournamentWinner()" class="mt-4 bg-green-600 text-white font-bold py-2 px-4 rounded hover:bg-green-700 transition">Declarar Ganador</button>
+</div>

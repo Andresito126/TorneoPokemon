@@ -1,54 +1,52 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { Tournament } from '../../models/tournament';
-import { TournamentService } from '../../services/tournament.service';
+import { Component } from '@angular/core';
+
 @Component({
   selector: 'app-add-tournament',
   templateUrl: './add-tournament.component.html',
-  styleUrl: './add-tournament.component.css'
+  styleUrls: ['./add-tournament.component.css']
 })
-export class AddTournamentComponent  {
-  @Output() closeModal = new EventEmitter<void>();
-  tournamentName = '';
-  startDate: string | null = null;
-  endDate: string | null = null;
-  teams: any[] = [];  // Lista de equipos disponibles
-  selectedTeams: number[] = []; // IDs de los equipos seleccionados
+export class AddTournamentComponent {
+   tournamentName: string = '';
+  startDate: string = '';
+  endDate: string = '';
+  newTeamNames: string[] = ['', '', '', ''];
+  teams: string[] = [];
+  isModalOpen: boolean = true;
 
-  @Output() tournamentCreated = new EventEmitter<void>();
-
-  constructor(private tournamentService: TournamentService) {}
-
-  ngOnInit(): void {
-    this.loadTeams(); // Cargar los equipos al iniciar el componente
-  }
-
-  loadTeams(): void {
-    this.tournamentService.getAllTeams().subscribe((data) => {
-      this.teams = data;
+  addTeams() {
+    this.newTeamNames.forEach((teamName) => {
+      if (teamName) {
+        this.teams.push(teamName);
+      }
     });
+    this.newTeamNames = ['', '', '', ''];
   }
 
-  toggleTeamSelection(teamId: number): void {
-    if (this.selectedTeams.includes(teamId)) {
-      this.selectedTeams = this.selectedTeams.filter(id => id !== teamId);
-    } else {
-      this.selectedTeams.push(teamId);
-    }
-  }
-
-  onSubmitTournament(): void {
-    const tournamentData = {
+  onSubmitTournament() {
+    const tournament = {
+      id_tournament: Date.now(),
       name: this.tournamentName,
       start_date: this.startDate,
       end_date: this.endDate,
-      teamIds: this.selectedTeams, // Agregamos los IDs de equipos seleccionados
+      teams: this.teams,
+      status: 'ongoing',
+      matches: [],
     };
 
-    this.tournamentService.createTournament(tournamentData).subscribe(() => {
-      this.tournamentCreated.emit();
-    });
+    const existingTournaments = JSON.parse(localStorage.getItem('tournaments') || '[]');
+    existingTournaments.push(tournament);
+    localStorage.setItem('tournaments', JSON.stringify(existingTournaments));
+
+    this.tournamentName = '';
+    this.startDate = '';
+    this.endDate = '';
+    this.teams = [];
+
+    this.close();
   }
+
   close() {
-    this.closeModal.emit();
+    this.isModalOpen = false;
   }
+  
 }

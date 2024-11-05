@@ -7,12 +7,10 @@ import { TournamentService } from '../services/tournament.service';
   styleUrl: './tournament-page.component.css'
 })
 export class TournamentPageComponent implements OnInit{
-  showModal: boolean = false;
   showAddTournamentModal = false;
-  showAddTeamsModal = false;
   tournaments: any[] = [];
   selectedTournamentMatches: any[] = [];
-  
+  selectedTournamentId: number | null = null;
 
   constructor(private tournamentService: TournamentService) {}
 
@@ -20,42 +18,34 @@ export class TournamentPageComponent implements OnInit{
     this.loadTournaments();
   }
 
+
   loadTournaments(): void {
-    this.tournamentService.getAllTournaments().subscribe((data) => {
-      this.tournaments = data;
-    });
+    this.tournaments = this.tournamentService.getAllTournaments();
   }
 
-  openModal() {
-    this.showAddTournamentModal = true; 
+
+  openModal(): void {
+    this.showAddTournamentModal = true;
   }
 
-  closeModal() {
+  closeModal(): void {
     this.showAddTournamentModal = false;
   }
 
-  openAddTeamsModal(tournamentId: number): void {
-   
-    this.showAddTeamsModal = true;
-  }
-
   viewMatches(tournamentId: number): void {
-    console.log(` partidos del torneo: ${tournamentId}`);
+    this.selectedTournamentId = tournamentId;
+    this.selectedTournamentMatches = this.tournamentService.getMatchesByTournamentId(tournamentId);
   }
 
   deleteTournament(tournamentId: number): void {
-    this.tournamentService.deleteTournament(tournamentId).subscribe(() => {
-      this.tournaments = this.tournaments.filter(
-        (tournament) => tournament.id_tournament !== tournamentId
-      );
-      console.log(`Torneo con ID ${tournamentId} eliminado`);
-    });
+    this.tournamentService.deleteTournament(tournamentId);
+    this.loadTournaments();  
   }
+
   setWinner(matchId: number): void {
-
-    this.tournamentService.setWinner(matchId).subscribe(() => {
-
-      this.viewMatches(this.selectedTournamentMatches[0]?.id_tournament); 
-    });
+    if (this.selectedTournamentId) {
+      this.tournamentService.setWinner(this.selectedTournamentId, matchId);
+      this.viewMatches(this.selectedTournamentId); 
+    }
   }
 }

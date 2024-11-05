@@ -15,11 +15,13 @@ import { BlackListModule } from './black-list/black-list.module';
 import { TournamentModule } from './tournament/tournament.module';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
     NavBarComponent,
+
   ],
   imports: [
     BrowserModule,
