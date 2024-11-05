@@ -1,0 +1,49 @@
+<div class="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
+  <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+    <h2 class="text-2xl font-semibold mb-4 text-center text-gray-800">Agregar Torneo</h2>
+    
+    <form (ngSubmit)="onSubmitTournament()" class="space-y-4">
+      <label class="block">
+        <span class="text-gray-700">Nombre del Torneo:</span>
+        <input 
+          type="text" 
+          [(ngModel)]="tournamentName" 
+          name="tournamentName" 
+          required 
+          class="mt-1 block w-full border-2 border-black rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50" 
+        />
+      </label>
+      
+      <label class="block">
+        <span class="text-gray-700">Fecha de Inicio:</span>
+        <input 
+          type="date" 
+          [(ngModel)]="startDate" 
+          name="startDate" 
+          required 
+          class="mt-1 block w-full border-2 border-black rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50" 
+        />
+      </label>
+
+      <h3 class="text-lg font-semibold text-gray-800">Agregar Equipos (hasta 4):</h3>
+      <div class="space-y-2">
+        <div *ngFor="let teamName of newTeamNames; let i = index">
+          <input 
+            type="text" 
+            [(ngModel)]="newTeamNames[i]" 
+            placeholder="Nombre del equipo" 
+            name="teamName{{i}}"
+            [ngModelOptions]="{ updateOn: 'blur' }" 
+            class="mt-1 block w-full border-2 border-black rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50" 
+          />
+        </div>
+      </div>
+      <button type="button" (click)="addTeams()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition">Agregar Equipos</button>
+
+      <div class="flex justify-end space-x-2 mt-4">
+        <button type="button" (click)="close()" class="text-red-500 hover:underline">Cerrar</button>
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition">Crear Torneo</button>
+      </div>
+    </form>
+  </div>
+</div>

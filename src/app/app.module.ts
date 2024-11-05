@@ -12,6 +12,8 @@ import { TrainersModule } from './trainers/trainers.module';
 import { FormsModule } from '@angular/forms';
 import { TeamsModule } from './teams/teams.module';
 import { BlackListModule } from './black-list/black-list.module';
+import { TournamentModule } from './tournament/tournament.module';
+
 
 
 @NgModule({
@@ -19,6 +21,7 @@ import { BlackListModule } from './black-list/black-list.module';
     AppComponent,
     FooterComponent,
     NavBarComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,8 @@ import { BlackListModule } from './black-list/black-list.module';
     TrainersModule,
     FormsModule,
     TeamsModule,
-    BlackListModule
+    BlackListModule,
+    TournamentModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -21,6 +21,7 @@ getTeams(): Observable<Team[]> {
   return this._http.get<Team[]>('http://localhost:3000/team/getTeams');
 }
 
+
 // obtener un equipo por ID
 getTeamById(id: number): Observable<Team> {
   return this._http.get<Team>(`${this._apiUrl}/${id}`);
